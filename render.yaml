@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: nexgen-privacy-search
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true # 自動的にランダムな署名キーを生成します
+      - key: PYTHON_VERSION
+        value: 3.10.0
